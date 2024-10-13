@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Consumo de API - Tienda de Instrumentos</title>
+  
+</head>
+<body>
+  <div class="container">
+    <h1>Consumo de API - Tienda de Instrumentos</h1>
+
+    <label for="id">ID:</label>
+    <input type="text" id="id" name="id" required>
+
+    <label for="type">Tipo:</label>
+    <input type="text" id="type" name="type"  required>
+
+    <label for="marca">Marca:</label>
+    <input type="text" id="marca" name="marca" required>
+
+    <label for="peso">Peso (kg):</label>
+    <input type="text" id="peso" name="peso" step="0.1" required>
+
+    <label for="value">Valor:</label>
+    <input type="number" id="value" name="value" required>
+
+    <button id="btnSend">Enviar</button>
+
+  </div>
+
+  <div>
+
+    
+    <h1>Lista de Instrumentos</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Marca</th>
+          <th>Tipo</th>
+          <th>Precio</th>
+          <th>Stock</th>
+        </tr>
+      </thead>
+      <tbody id="tabla-instrumentos">
+        <!-- Las filas de instrumentos se agregarán aquí -->
+      </tbody>
+    </table>
+  </div>
+
+  
+
+  <script src="scripts.js"></script>
+</body>
+</html>
