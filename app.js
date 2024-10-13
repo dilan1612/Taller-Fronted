@@ -1,5 +1,5 @@
 // URL de tu API desplegada (puede ser en Heroku, Render, etc.)
-const API_URL = 'https://backend-trp2.onrender.com//instruments' 
+const API_URL = 'https://backend-trp2.onrender.com//instruments'; 
 
 // Función para obtener los instrumentos
 async function obtenerInstrumentos() {

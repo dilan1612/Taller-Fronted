@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <title>Consumo de API - Tienda de Instrumentos</title>
-  
 </head>
 <body>
   <div class="container">
@@ -15,7 +14,7 @@
     <input type="text" id="id" name="id" required>
 
     <label for="type">Tipo:</label>
-    <input type="text" id="type" name="type"  required>
+    <input type="text" id="type" name="type" required>
 
     <label for="marca">Marca:</label>
     <input type="text" id="marca" name="marca" required>
@@ -27,21 +26,18 @@
     <input type="number" id="value" name="value" required>
 
     <button id="btnSend">Enviar</button>
-
   </div>
 
-  <div>
-
-    
+  <div class="container">
     <h1>Lista de Instrumentos</h1>
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>Nombre</th>
-          <th>Marca</th>
+          <th>ID</th>
           <th>Tipo</th>
-          <th>Precio</th>
-          <th>Stock</th>
+          <th>Marca</th>
+          <th>Peso</th>
+          <th>Valor</th>
         </tr>
       </thead>
       <tbody id="tabla-instrumentos">
@@ -49,8 +45,6 @@
       </tbody>
     </table>
   </div>
-
-  
 
   <script src="scripts.js"></script>
 </body>
