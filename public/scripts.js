@@ -59,6 +59,7 @@ async function obtenerInstrumentos() {
 }
 
 // Función para mostrar los instrumentos en la tabla HTML
+// Función para mostrar los instrumentos en la tabla HTML
 function mostrarInstrumentosEnTabla(instrumentos) {
   const tabla = document.getElementById('tabla-instrumentos');
   tabla.innerHTML = ''; // Limpiar la tabla antes de agregar nuevos datos
@@ -67,7 +68,7 @@ function mostrarInstrumentosEnTabla(instrumentos) {
     const fila = document.createElement('tr');
 
     const celdaId = document.createElement('td');
-    celdaId.textContent = instrumento.id;
+    celdaId.textContent = instrumento.id; // Asumimos que 'id' es un campo personalizado
     fila.appendChild(celdaId);
 
     const celdaTipo = document.createElement('td');
@@ -86,9 +87,49 @@ function mostrarInstrumentosEnTabla(instrumentos) {
     celdaValor.textContent = `$${instrumento.value}`;
     fila.appendChild(celdaValor);
 
+    // Celda para el botón de eliminar
+    const celdaEliminar = document.createElement('td');
+    const botonEliminar = document.createElement('button');
+    botonEliminar.textContent = 'Eliminar';
+    botonEliminar.classList.add('btn-delete');
+    botonEliminar.addEventListener('click', () => eliminarInstrumento(instrumento._id)); // Aquí usamos _id
+    celdaEliminar.appendChild(botonEliminar);
+    fila.appendChild(celdaEliminar);
+
+    // Celda para el botón de actualizar
+    const celdaActualizar = document.createElement('td');
+    const botonActualizar = document.createElement('button');
+    botonActualizar.textContent = 'Actualizar';
+    botonActualizar.classList.add('btn-update');
+    botonActualizar.addEventListener('click', () => {
+      // Redirigir a la vista de edición con el _id en la URL
+      window.location.href = `edit.html/?objectId=${instrumento._id}`;
+    });
+    celdaActualizar.appendChild(botonActualizar);
+    fila.appendChild(celdaActualizar);
+
     tabla.appendChild(fila);
   });
 }
+
+
+// Función para eliminar un instrumento usando el _id
+function eliminarInstrumento(objectId) {
+  const url = `${API_URL}/${objectId}`; // Usamos el _id del instrumento
+  fetch(url, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Instrumento eliminado:', data);
+    obtenerInstrumentos(); // Actualizar la tabla después de eliminar
+  })
+  .catch(error => console.error('Error al eliminar el instrumento:', error));
+}
+
 
 // Llamar a la función cuando la página haya cargado completamente
 document.addEventListener('DOMContentLoaded', obtenerInstrumentos);
